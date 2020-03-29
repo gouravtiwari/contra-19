@@ -1,0 +1,7 @@
+{
+  "name": "contra-19",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
