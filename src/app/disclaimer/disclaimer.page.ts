@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-disclaimer',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisclaimerPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
+  }
+
+  gotoTab1() {
+    console.log("I am on tab1");
+    this.navCtrl.navigateRoot('/tabs')
   }
 
 }

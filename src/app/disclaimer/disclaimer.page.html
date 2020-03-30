@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>disclaimer</ion-title>
+    <img src="../../assets/app-icon.png" class="disclaimer-icon"/>
+    <ion-title class="disclaimer-title">Contra-19</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="disclaimer-content">
+  ConTra-19 (Contact Tracing for Covid-19) provides you ExposureScore, Priority Level and Health Score, only to surface your health information and to help you make better decisions.</div>
+
+  <div class="disclaimer-content">If you have any symptom and you know that you came in contact with someone who is tested CoronaVirus positive, please visit nearest hospital.</div>
+
+  <div class="disclaimer-content">By accepting the terms and conditions, you understand that the ExposureScore, Priority Level and Health Score shall only be used for informational purpose. We do not provide any recommendation.</div>
+
+  <section class="disclaimer-buttons-section">
+    <ion-button color="buttons ion-float-left" shape="round" size="medium">Decline</ion-button>
+    <ion-button color="buttons ion-float-right" shape="round" size="medium" (click)="gotoTab1()">Accept</ion-button>
+  </section>
 
 </ion-content>

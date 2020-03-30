@@ -3,6 +3,18 @@
 
 /** Ionic CSS Variables **/
 :root {
+  --ion-background-color:#2c91a3;
+
+  /** Buttons **/
+  --ion-color-buttons: #2c91a3;
+  --ion-color-buttons-rgb: 44, 145, 163;
+  --ion-color-buttons-contrast: #f7ba7b;
+  --ion-color-buttons-contrast-rgb: 247, 186, 123;
+  --ion-color-buttons-shade: #f5a44d;
+  --ion-color-buttons-tint: #f5a44d;
+  --ion-color-buttons-border-color: #f5a44d;
+
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
