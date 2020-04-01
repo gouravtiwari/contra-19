@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController, Platform, AlertController, LoadingController } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-disclaimer',
@@ -7,15 +10,62 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./disclaimer.page.scss'],
 })
 export class DisclaimerPage implements OnInit {
+  error: string = '';
+  wantsToLoginWithCredentials: boolean = false;
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private fireauth: AngularFireAuth, private router: Router, private platform: Platform, public loadingController: LoadingController,
+    public alertController: AlertController,
+    private splashScreen: SplashScreen, private menuCtrl: MenuController, private navCtrl: NavController) {
+  }
 
   ngOnInit() {
   }
 
-  gotoTab1() {
-    console.log("I am on tab1");
-    this.navCtrl.navigateRoot('/tabs')
+  ionViewDidEnter() {
+    this.menuCtrl.enable(false, 'start');
+    this.menuCtrl.enable(false, 'end');
+    this.platform.ready().then(() => {
+      this.splashScreen.hide();
+    });
+  }
+  login() {
+    this.openLoader();
+    this.signInAnonymously().then(
+      (userData) => {
+        console.log(userData);
+        this.navCtrl.navigateRoot('/tabs');
+      }
+    ).catch(err => {
+      if (err) {
+        console.log(err);
+        //this.presentToast(`${err}`, true, 'bottom', 2100);
+      }
+
+    }).then(el => this.closeLoading());
+  }
+  private signInAnonymously() {
+    return new Promise<any>((resolve, reject) => {
+      this.fireauth.auth.signInAnonymously().then((data) => {
+        resolve(data);
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        reject(`login failed ${error.message}`)
+        // ...
+      });
+    });
+  }
+  async openLoader() {
+    const loading = await this.loadingController.create({
+      message: 'Please Wait ...',
+      duration: 2000
+    });
+    await loading.present();
+  }
+  async closeLoading() {
+    return await this.loadingController.dismiss();
   }
 
 }
