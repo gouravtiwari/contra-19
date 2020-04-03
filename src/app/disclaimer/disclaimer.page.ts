@@ -33,7 +33,7 @@ export class DisclaimerPage implements OnInit {
     this.signInAnonymously().then(
       (userData) => {
         console.log(userData);
-        this.navCtrl.navigateRoot('/tabs');
+        this.navCtrl.navigateRoot('/user-info');
       }
     ).catch(err => {
       if (err) {
