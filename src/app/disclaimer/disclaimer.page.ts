@@ -3,6 +3,7 @@ import { NavController, MenuController, Platform, AlertController, LoadingContro
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UserRegistrationService } from './../services/user-registration.service';
 
 @Component({
   selector: 'app-disclaimer',
@@ -11,15 +12,21 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class DisclaimerPage implements OnInit {
   error: string = '';
+  idToken: string = '';
   wantsToLoginWithCredentials: boolean = false;
 
-  constructor(private fireauth: AngularFireAuth, private router: Router, private platform: Platform, public loadingController: LoadingController,
+  constructor(private fireauth: AngularFireAuth,
+    private router: Router,
+    private platform: Platform,
+    public loadingController: LoadingController,
     public alertController: AlertController,
-    private splashScreen: SplashScreen, private menuCtrl: MenuController, private navCtrl: NavController) {
+    private splashScreen: SplashScreen,
+    private menuCtrl: MenuController,
+    private userRegistrationService: UserRegistrationService,
+    private navCtrl: NavController) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ionViewDidEnter() {
     this.menuCtrl.enable(false, 'start');
@@ -33,6 +40,7 @@ export class DisclaimerPage implements OnInit {
     this.signInAnonymously().then(
       (userData) => {
         console.log(userData);
+        this.registerUserToBackend(userData.user.xa);
         this.navCtrl.navigateRoot('/user-info');
       }
     ).catch(err => {
@@ -51,10 +59,13 @@ export class DisclaimerPage implements OnInit {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-
         reject(`login failed ${error.message}`)
-        // ...
       });
+    });
+  }
+  private registerUserToBackend(idToken) {
+    return new Promise<any>((resolve, reject) => {
+      this.userRegistrationService.signUp(idToken)
     });
   }
   async openLoader() {
