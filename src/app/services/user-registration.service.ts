@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserRegistrationService {
-  url = 'http://localhost:3000'
+  url = 'https://c19-tracker.herokuapp.com'
 
   constructor(private http: HttpClient) { }
 
