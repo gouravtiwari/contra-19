@@ -28,7 +28,7 @@ export class UserRegistrationService {
     let postData = { 'idToken': idToken }
 
     console.log('User registering-------------------')
-    this.http.post(`${this.url}/users`, postData, httpOptions)
+    return this.http.post(`${this.url}/users`, postData, httpOptions)
       .subscribe(
         data => { return data['_body']; },
         error => { console.log(error); }
