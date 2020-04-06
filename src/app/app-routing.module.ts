@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'user-info',
     loadChildren: () => import('./user-info/user-info.module').then( m => m.UserInfoPageModule)
+  },
+  {
+    path: 'qr-code',
+    loadChildren: () => import('./qr-code/qr-code.module').then( m => m.QrCodePageModule)
   }
 ];
 @NgModule({
