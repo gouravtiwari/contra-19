@@ -24,3 +24,15 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-toolbar ion-title.page-title {
+  color: #f7ba7b;
+  text-align: center;
+  font-size: 28px;
+}
+
+ion-toolbar img.page-icon {
+  margin: 3% 42%;
+  max-width: 75px;
+  max-height: 75px;
+}
