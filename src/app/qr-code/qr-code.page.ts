@@ -23,7 +23,7 @@ export class QrCodePage implements OnInit {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      reject(`login failed ${error.message}`)
+      console.log(`login failed ${error.message}`)
     });
   }
 
@@ -35,7 +35,7 @@ export class QrCodePage implements OnInit {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        reject(`login failed ${error.message}`)
+        console.log(`login failed ${error.message}`)
       });
     });
   }
