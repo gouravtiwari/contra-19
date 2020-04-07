@@ -16,7 +16,7 @@ export class QrCodePage implements OnInit {
   ngOnInit() {
     this.signInAnonymously().then((data) => {
       if (data.user && data.user.uid) {
-        this.user.uid = data.user.uid;
+        this.user = { uid: data.user.uid };
       }
       console.log(this.user);
     }).catch((error) => {
