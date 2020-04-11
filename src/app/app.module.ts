@@ -9,11 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//  firebase imports, remove what you don't require
+// QR Code scanner
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { FormsModule } from '@angular/forms';
+
+//  firebase imports
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
 
 // environment
@@ -28,11 +30,13 @@ import { environment } from '../environments/environment';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

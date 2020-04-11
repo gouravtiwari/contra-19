@@ -9,6 +9,21 @@
 
 <ion-content>
   <div class="page-content">
-  This QR code is your unique id. When you meet someone within 6 feet distance, do not forget to scan thier QR code.</div>
+    This QR code is your unique id. When you meet someone within 6 feet distance, do not forget to scan thier QR code.
+  </div>
+
+  <div class="qr-code-buttons-section">
+    <ion-button color="buttons ion-float-left" shape="round" size="medium" (click)="encodedText()">
+      View QR code
+    </ion-button>
+
+    <ion-button color="buttons ion-float-left" shape="round" size="medium" (click)="scanCode()">
+      Scan a QR code
+    </ion-button>
+
+    <ion-button color="buttons ion-float-left" shape="round" size="medium" (click)="userProfile()">
+      Back
+    </ion-button>
+  </div>
 
 </ion-content>

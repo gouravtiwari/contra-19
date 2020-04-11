@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from  "@angular/router";
+import { NavController } from '@ionic/angular';
 //import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,16 +10,20 @@ import { Router } from  "@angular/router";
 })
 export class UserInfoPage implements OnInit {
 
- constructor() { }
- // constructor(private  authService:  AuthService, private  router:  Router) { }
+  constructor(private navCtrl: NavController) {}
+  // constructor(private  authService:  AuthService, private  router:  Router) { }
 
   ngOnInit() {
   }
 
-    register(form) {
+  register(form) {
   //  this.authService.register(form.value).subscribe((res) => {
   //    this.router.navigateByUrl('home');
    // });
+  }
+
+  qrCode() {
+    this.navCtrl.navigateRoot('/qr-code');
   }
 
 }

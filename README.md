@@ -63,7 +63,7 @@ On Mac
 
   Go to Android Studio preferences and install development tools, which will prompt for license agreement. Accept the license and that should be it.
 
-Issues on Ubuntu:
+- Issues on Ubuntu:
 
   1. When U run `ionic cordova run android -l` the error prompted that config.xml or package.json not available. Execute following:
   ```
@@ -79,3 +79,7 @@ Issues on Ubuntu:
   ```
     npm i -g cordova
   ```
+
+### Tutorials used:
+
+- [Barcode Scanner](https://www.freakyjolly.com/ionic-barcode-qr-code-scanner-generator-tutorial/)
