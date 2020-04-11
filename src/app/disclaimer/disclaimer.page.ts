@@ -40,7 +40,11 @@ export class DisclaimerPage implements OnInit {
     this.signInAnonymously().then(
       (userData) => {
         console.log(userData);
-        this.registerUserToBackend(userData.user.xa);
+        // this.registerUserToBackend(userData.user.xa);
+        this.userRegistrationService.signUp(userData.user.xa).subscribe(
+          data => { return data['_body']; },
+          error => { console.log(error); }
+        );
         this.navCtrl.navigateRoot('/user-info');
       }
     ).catch(err => {
@@ -64,9 +68,7 @@ export class DisclaimerPage implements OnInit {
     });
   }
   private registerUserToBackend(idToken) {
-    return new Promise<any>((resolve, reject) => {
-      this.userRegistrationService.signUp(idToken)
-    });
+    this.userRegistrationService.signUp(idToken)
   }
   async openLoader() {
     const loading = await this.loadingController.create({

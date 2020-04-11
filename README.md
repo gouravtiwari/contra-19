@@ -21,6 +21,7 @@ On Mac
 
 - Install Android Studio, which also install android SDK
 - Connect your mobile in developer mode
+- Install native-run package `npm i -g native-run`
 - run ` ionic cordova run android -l`
 - Common issues while installing and configuring android SDK
   1. `ANDROID_SDK_ROOT` and `ANDROID_HOME` are not configured correctly
@@ -61,3 +62,20 @@ On Mac
   ```
 
   Go to Android Studio preferences and install development tools, which will prompt for license agreement. Accept the license and that should be it.
+
+Issues on Ubuntu:
+
+  1. When U run `ionic cordova run android -l` the error prompted that config.xml or package.json not available. Execute following:
+  ```
+    integrations enable cordova --add
+  ```
+  2. Error while getting native targets for android: No valid Android SDK root found
+  In bashrc set following and do `source ~/.bashrc`
+  ```
+    export ANDROID_HOME=/home/<user>/Android/Sdk
+    export ANDROID_SDK_ROOT=/home/<user>/Android/Sdk
+  ```
+  3. [ERROR] The Cordova CLI was not found on your PATH. Please install Cordova globally:
+  ```
+    npm i -g cordova
+  ```
