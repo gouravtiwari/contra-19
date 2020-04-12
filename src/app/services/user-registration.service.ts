@@ -11,9 +11,31 @@ export class UserRegistrationService {
 
   constructor(private http: HttpClient) { }
 
-  usersShow(id): Observable<any> {
-    console.log("in signup------------------------", this.http.get(`${this.url}users/1`));
-    return this.http.get(`${this.url}users/1`);
+  usersShow(idToken): Observable<any> {
+    return this.http.get(`${this.url}/users/${idToken}`);
+  }
+
+  usersUpdate(idToken): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Accept": 'application/json',
+        'Content-Type':  'application/json'
+      })
+    };
+
+    let requestData = {
+      'idToken': idToken,
+      "user": {
+        "age"=>"60",
+        "gender"=>"transgender", // Possible values: 'male', 'female', 'transgender'
+        "zip_code"=>"400061",
+        "country"=>"", // Not implemented
+        "status"=>"infected"
+      }
+    }
+
+    console.log('User updating-------------------')
+    return this.http.patch(`${this.url}/users/${idToken}`, requestData, httpOptions);
   }
 
   signUp(idToken): Observable<any> {
@@ -25,9 +47,9 @@ export class UserRegistrationService {
       })
     };
 
-    let postData = { 'idToken': idToken }
+    let requestData = { 'idToken': idToken }
 
     console.log('User registering-------------------')
-    return this.http.post(`${this.url}/users`, postData, httpOptions);
+    return this.http.post(`${this.url}/users`, requestData, httpOptions);
   }
 }
