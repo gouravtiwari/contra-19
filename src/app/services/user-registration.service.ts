@@ -26,11 +26,11 @@ export class UserRegistrationService {
     let requestData = {
       'idToken': idToken,
       "user": {
-        "age"=>"60",
-        "gender"=>"transgender", // Possible values: 'male', 'female', 'transgender'
-        "zip_code"=>"400061",
-        "country"=>"", // Not implemented
-        "status"=>"infected"
+        "age": "60",
+        "gender": "transgender", // Possible values: 'male', 'female', 'transgender'
+        "zip_code": "400061",
+        "country": "", // Not implemented
+        "status": "infected"
       }
     }
 
