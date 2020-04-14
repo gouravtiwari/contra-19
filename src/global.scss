@@ -34,7 +34,7 @@ ion-grid {
 ion-header {
   top: 0px;
   left: 0px;
-  height: 150px;
+  height: 20%;
   background: transparent linear-gradient(107deg, #21CEDD 0%, #10D0B2 100%) 0% 0% no-repeat padding-box;
   border-radius: 0 0 24px 24px;
   opacity: 1;
@@ -71,7 +71,7 @@ ion-content {
   text-align: justify;
   position: absolute;
   z-index: 11;
-  top: 130px;
+  top: 16%;
   left: 3%;
   width: 94%;
 
@@ -79,6 +79,8 @@ ion-content {
   box-shadow: 0px 9px 38px #00000029;
   border-radius: 13px;
   opacity: 1;
+  overflow: hidden;
+  height: 75%;
 }
 
 ion-button {
@@ -89,4 +91,8 @@ ion-button {
 
 .page-content {
   margin: 20px;
+}
+
+.header-md::after {
+  background: none;
 }
