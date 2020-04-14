@@ -1,75 +1,91 @@
-<ion-header>
-  <ion-toolbar>
-    <img src="../../assets/app-icon.png" class="page-icon"/>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-title class="page-title">Anonymous Profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-grid>
+  <ion-header>
+    <ion-row>
+    </ion-row>
+  </ion-header>
+</ion-grid>
 
-<ion-content  class="disclaimer-title">
-  <form  #form="ngForm" (ngSubmit)="register(form)">
-    <ion-grid>
-      <ion-row class="disclaimer-title">
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <div text-center>
-            <h3> </h3>
-          </div>
-          <div padding>
-            <ion-item>
-              <ion-label>Age</ion-label>
-              <ion-input  name="Age" type="text" placeholder="30" ngModel required></ion-input>
-            </ion-item>
-<ion-list>
-  <ion-item>
-     <ion-label>Gender</ion-label>
-          <ion-select value="male">
-            <ion-select-option value="female">Female</ion-select-option>
-            <ion-select-option value="male">Male</ion-select-option>
-          </ion-select>
-    </ion-item>
-</ion-list>
-            <ion-item>
-              <ion-label>Postal/Zip Code</ion-label>
-              <ion-input name="zipCode" type="text" placeholder="19380" ngModel required></ion-input>
-            </ion-item>
-
-<ion-list>
-  <ion-item>
-     <ion-label>Country</ion-label>
-          <ion-select value="USA">
-            <ion-select-option value="usa">USA</ion-select-option>
-            <ion-select-option value="india">India</ion-select-option>
-          </ion-select>
-    </ion-item>
-</ion-list>
-<ion-list>
-  <ion-item>
-     <ion-label>Status</ion-label>
-          <ion-select value="icp">
-            <ion-select-option value="icp">In Contact with Positive</ion-select-option>
-            <ion-select-option value="tp">Tested Positive</ion-select-option>
-          </ion-select>
-    </ion-item>
-</ion-list>
-          </div>
-          <div padding>
-
-
-
-
-          </div>
-
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-      <ion-row >
-    <ion-col col-6>
-      <ion-button  color="light" round size="large" type="submit" [disabled]="form.invalid" expand="block">Save</ion-button>
+<ion-content>
+  <ion-row>
+    <ion-col size="2">
+      <div></div>
     </ion-col>
-    <ion-col col-6>
-      <ion-button color="light" round  size="large" expand="block" (click)="qrCode()">QR Code</ion-button>
+    <ion-col size="8">
+      <div class="page-content-title">Anonymous Profile</div>
     </ion-col>
+    <ion-col size="2">
+        <div></div>
+      </ion-col>
   </ion-row>
+  <form  #form="ngForm" (ngSubmit)="register(form)">
+    <ion-row class="disclaimer-title">
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h3> </h3>
+        </div>
+        <div padding>
+          <ion-item>
+            <ion-label>Age</ion-label>
+            <ion-input  name="Age" type="text" placeholder="30" ngModel required></ion-input>
+          </ion-item>
+          <ion-list>
+            <ion-item>
+               <ion-label>Gender</ion-label>
+                    <ion-select value="male">
+                      <ion-select-option value="female">Female</ion-select-option>
+                      <ion-select-option value="male">Male</ion-select-option>
+                    </ion-select>
+              </ion-item>
+          </ion-list>
+          <ion-item>
+            <ion-label>Postal/Zip Code</ion-label>
+            <ion-input name="zipCode" type="text" placeholder="19380" ngModel required></ion-input>
+          </ion-item>
+
+          <ion-list>
+            <ion-item>
+               <ion-label>Country</ion-label>
+                    <ion-select value="USA">
+                      <ion-select-option value="usa">USA</ion-select-option>
+                      <ion-select-option value="india">India</ion-select-option>
+                    </ion-select>
+              </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-item>
+               <ion-label>Status</ion-label>
+                    <ion-select value="icp">
+                      <ion-select-option value="icp">In Contact with Positive</ion-select-option>
+                      <ion-select-option value="tp">Tested Positive</ion-select-option>
+                    </ion-select>
+              </ion-item>
+          </ion-list>
+        </div>
+        <div padding>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="1">
+        <div></div>
+      </ion-col>
+      <ion-col size="4">
+        <div>
+          <ion-button color="buttons ion-float-left" shape="round" size="medium" type="submit" [disabled]="form.invalid">Save</ion-button>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div></div>
+      </ion-col>
+      <ion-col size="4">
+        <div>
+        <ion-button color="buttons ion-float-right" shape="round" size="medium" (click)="qrCode()">QR Code</ion-button>
+        </div>
+      </ion-col>
+      <ion-col size="1">
+        <div>
+        </div>
+      </ion-col>
+    </ion-row>
   </form>
 </ion-content>
