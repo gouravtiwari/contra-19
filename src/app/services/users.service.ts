@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserRegistrationService {
+export class UsersService {
   url = 'https://c19-tracker.herokuapp.com'
 
   constructor(private http: HttpClient) { }

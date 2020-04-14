@@ -3,7 +3,7 @@ import { NavController, MenuController, Platform, AlertController, LoadingContro
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { UserRegistrationService } from './../services/user-registration.service';
+import { UsersService } from './../services/users.service';
 
 @Component({
   selector: 'app-disclaimer',
@@ -22,7 +22,7 @@ export class DisclaimerPage implements OnInit {
     public alertController: AlertController,
     private splashScreen: SplashScreen,
     private menuCtrl: MenuController,
-    private userRegistrationService: UserRegistrationService,
+    private usersService: UsersService,
     private navCtrl: NavController) {
   }
 
@@ -41,7 +41,7 @@ export class DisclaimerPage implements OnInit {
       (userData) => {
         console.log(userData);
         // this.registerUserToBackend(userData.user.xa);
-        this.userRegistrationService.signUp(userData.user.xa).subscribe(
+        this.usersService.signUp(userData.user.xa).subscribe(
           data => { return data['_body']; },
           error => { console.log(error); }
         );
@@ -68,7 +68,7 @@ export class DisclaimerPage implements OnInit {
     });
   }
   private registerUserToBackend(idToken) {
-    this.userRegistrationService.signUp(idToken)
+    this.usersService.signUp(idToken)
   }
   async openLoader() {
     const loading = await this.loadingController.create({
