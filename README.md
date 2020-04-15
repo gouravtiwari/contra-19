@@ -4,7 +4,13 @@ Ionic app.
 
 More details to be added
 
-## Resources
+## Development setup
+
+- Install packages:
+
+```
+$ npm install
+```
 
 - Running in lab mode
 
@@ -12,8 +18,6 @@ More details to be added
 $ npm i @ionic/lab --save-dev
 $ ionic serve -l
 ```
-https://github.com/soroushchehresa/awesome-coronavirus
-
 
 ### How to test it on mobile?
 
@@ -80,6 +84,8 @@ On Mac
     npm i -g cordova
   ```
 
-### Tutorials used:
+### Tutorials/Resources:
 
 - [Barcode Scanner](https://www.freakyjolly.com/ionic-barcode-qr-code-scanner-generator-tutorial/)
+- [Anonymous login with Firebase](https://enappd.com/blog/firebase-anonymous-login-in-ionic-4/37/)
+- [Graphics](https://github.com/soroushchehresa/awesome-coronavirus)
