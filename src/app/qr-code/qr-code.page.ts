@@ -19,6 +19,7 @@ import {
 export class QrCodePage implements OnInit {
   encodeData: any;
   scannedData: {};
+  elementType: 'url' | 'canvas' | 'img' = 'img';
   barcodeScannerOptions: BarcodeScannerOptions;
 
   constructor(private fireauth: AngularFireAuth,
@@ -43,8 +44,8 @@ export class QrCodePage implements OnInit {
     // once complete navigation is done, we will get uid by:
     // this.fireauth.auth.getUid()
     this.signInAnonymously().then((data) => {
-      if (data.user && data.user.uid) {
-        this.encodeData = data.user.uid;
+      if (data.user && data.user.xa) {
+        this.encodeData = data.user.xa;
         this.barcodeScannerOptions = {
           showTorchButton: true,
           showFlipCameraButton: true
