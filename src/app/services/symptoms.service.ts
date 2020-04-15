@@ -10,46 +10,52 @@ export class SymptomsService {
 
   constructor(private http: HttpClient) { }
 
-  // TODO: Change routes to make them nested under users to leverage idToken scoping for safety
-  symptomsShow(idToken, id): Observable<any> {
-    return this.http.get(`${this.url}/symptoms/${id}`);
+  symptomsShow(idToken, observed_date): Observable<any> {
+    return this.http.get(`${this.url}/symptoms/${observed_date}?idToken=${idToken}`);
   }
 
-  symptomsUpdate(idToken, id): Observable<any> {
+  symptomsUpdate(idToken, observed_date): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Accept": 'application/json',
-        'Content-Type':  'application/json'
+        'Content-Type': 'application/json'
       })
     };
 
     let requestData = {
       'idToken': idToken,
-      'id': id,
-      "symptom": {
-        "fever": "60",
-        "param1": "transgender",
-        "param2": "400061",
+      'symptom': {
+        'observed_date': '',
+        'fever': '98.4',
+        'weakness': true,
+        'dry_cough': false,
+        'sore_throat': true,
+        'runny_nose': false,
+        'difficulty_in_breathing': true
       }
     }
 
-    return this.http.patch(`${this.url}/symptoms/${id}`, requestData, httpOptions);
+    return this.http.patch(`${this.url}/symptoms/${observed_date}`, requestData, httpOptions);
   }
 
   symptomsCreate(idToken): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Accept": 'application/json',
-        'Content-Type':  'application/json'
+        'Content-Type': 'application/json'
       })
     };
 
     let requestData = {
       'idToken': idToken,
-      "symptom": {
-        "fever": "60",
-        "param1": "transgender",
-        "param2": "400061",
+      'symptom': {
+        'observed_date': '',
+        'fever': '98.4',
+        'weakness': true,
+        'dry_cough': false,
+        'sore_throat': true,
+        'runny_nose': false,
+        'difficulty_in_breathing': true
       }
     }
 
