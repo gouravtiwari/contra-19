@@ -1,6 +1,61 @@
 <ion-grid>
   <ion-header>
+    <ion-row class="menu-container">
+      <ion-col size="10">
+        <div>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-button class="menu-outline" color="none" shape="none"><ion-icon name="menu-outline"></ion-icon></ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
     <ion-row>
+      <ion-col size="2">
+        <div>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-button class="dashboard-icon" color="none" shape="none"></ion-button>
+        </div>
+      </ion-col>
+      <ion-col size="1">
+        <div>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-button class="profile-icon" color="none" shape="none"></ion-button>
+        </div>
+      </ion-col>
+      <ion-col size="1">
+        <div>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-button class="health-report-icon" color="none" shape="none"></ion-button>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div>
+        </div>
+      </ion-col>
     </ion-row>
   </ion-header>
 </ion-grid>
@@ -17,7 +72,7 @@
         <div></div>
       </ion-col>
   </ion-row>
-  <form  #form="ngForm" (ngSubmit)="register(form)">
+  <form #form="ngForm" (ngSubmit)="register(form)">
     <ion-row class="disclaimer-title">
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
         <div text-center>
@@ -71,7 +126,7 @@
       </ion-col>
       <ion-col size="4">
         <div>
-          <ion-button color="buttons ion-float-left" shape="round" size="medium" type="submit" [disabled]="form.invalid">Save</ion-button>
+          <ion-button color="buttons ion-float-left" shape="round" size="medium" [disabled]="form.invalid" class="unselected">Cancel</ion-button>
         </div>
       </ion-col>
       <ion-col size="2">
@@ -79,7 +134,7 @@
       </ion-col>
       <ion-col size="4">
         <div>
-        <ion-button color="buttons ion-float-right" shape="round" size="medium" (click)="qrCode()">QR Code</ion-button>
+          <ion-button color="buttons ion-float-left" shape="round" size="medium" type="submit" [disabled]="form.invalid">Save</ion-button>
         </div>
       </ion-col>
       <ion-col size="1">
@@ -89,3 +144,38 @@
     </ion-row>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="2">
+      <div>
+      </div>
+    </ion-col>
+    <ion-col size="2">
+      <div>
+        <ion-button class="qr-code-icon" color="none" shape="none" (click)="qrCode()"></ion-button>
+      </div>
+    </ion-col>
+    <ion-col size="1">
+      <div>
+      </div>
+    </ion-col>
+    <ion-col size="2" style="text-align: center; color: #ffffff;">
+      <div>|<br/>|<br/>|
+      </div>
+    </ion-col>
+    <ion-col size="1">
+      <div>
+      </div>
+    </ion-col>
+    <ion-col size="2">
+      <div>
+        <ion-button (click)="scanCode()" class="qr-code-scanner-icon" color="none" shape="none"></ion-button>
+      </div>
+    </ion-col>
+    <ion-col size="2">
+      <div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>

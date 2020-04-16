@@ -38,6 +38,7 @@ ion-header {
   background: transparent linear-gradient(107deg, #21CEDD 0%, #10D0B2 100%) 0% 0% no-repeat padding-box;
   border-radius: 0 0 24px 24px;
   opacity: 1;
+  padding-top: 2%;
 }
 
 ion-title {
@@ -67,7 +68,15 @@ ion-content {
   border-radius: 13px;
   opacity: 1;
   overflow: hidden;
-  height: 75%;
+  height: 70%;
+}
+
+ion-footer {
+  background: transparent linear-gradient(98deg, #1ECED6 0%, #10CAAE 100%) 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+  height: 12%;
+  padding: 2%;
 }
 
 ion-button {
@@ -99,5 +108,64 @@ ion-button.unselected {
   font-weight: bold;
   letter-spacing: 0px;
   color: #21CEDD;
+  opacity: 1;
+}
+
+ion-button.qr-code-icon {
+  background: transparent url('/assets/qr-code-icon.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ion-button.qr-code-scanner-icon {
+  background: transparent url('/assets/qr-code-scanner-icon.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ion-button.dashboard-icon {
+  background: transparent url('/assets/dashboard-icon.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ion-button.profile-icon {
+  background: transparent url('/assets/profile-icon.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ion-button.health-report-icon {
+  background: transparent url('/assets/health-report-icon.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ion-row.menu-container {
+  height: 20px;
+}
+
+ion-button.menu-outline {
+  background: 0% 0% no-repeat padding-box;
   opacity: 1;
 }
