@@ -121,6 +121,17 @@ ion-button.qr-code-icon {
   box-shadow: none;
 }
 
+
+ion-button.qr-code-selected-icon {
+  background: transparent url('/assets/qr-code-icon.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 ion-button.qr-code-scanner-icon {
   background: transparent url('/assets/qr-code-scanner-icon.svg') 0% 0% no-repeat padding-box;
   opacity: 1;
@@ -151,8 +162,28 @@ ion-button.profile-icon {
   box-shadow: none;
 }
 
+ion-button.profile-selected-icon {
+  background: transparent url('/assets/profile-selected-icon.svg') 24% 24% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 ion-button.health-report-icon {
   background: transparent url('/assets/health-report-icon.svg') 0% 0% no-repeat padding-box;
+  opacity: 1;
+  min-height: 50px;
+  min-width: 50px;
+  --box-shadow: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+ion-button.health-report-selected-icon {
+  background: transparent url('/assets/health-report-selected-icon.svg') 50% 40% no-repeat;
   opacity: 1;
   min-height: 50px;
   min-width: 50px;
