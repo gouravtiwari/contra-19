@@ -34,7 +34,7 @@ ion-grid {
 ion-header {
   top: 0px;
   left: 0px;
-  height: 20%;
+  height: 24%;
   background: transparent linear-gradient(107deg, #21CEDD 0%, #10D0B2 100%) 0% 0% no-repeat padding-box;
   border-radius: 0 0 24px 24px;
   opacity: 1;
@@ -59,7 +59,7 @@ ion-content {
   text-align: justify;
   position: absolute;
   z-index: 11;
-  top: 16%;
+  top: 20%;
   left: 3%;
   width: 94%;
 
@@ -68,7 +68,7 @@ ion-content {
   border-radius: 13px;
   opacity: 1;
   overflow: hidden;
-  height: 70%;
+  height: 67%;
 }
 
 ion-footer {
@@ -142,24 +142,31 @@ ion-button.qr-code-scanner-icon {
   box-shadow: none;
 }
 
-ion-button.dashboard-icon {
-  background: transparent url('/assets/dashboard-icon.svg') 0% 0% no-repeat padding-box;
+ion-button.top-navigation-icon {
+  background: 0% 0% no-repeat padding-box;
   opacity: 1;
-  min-height: 50px;
-  min-width: 50px;
+  min-height: 60px;
+  min-width: 60px;
   --box-shadow: none;
   border-radius: 0;
   box-shadow: none;
 }
 
-ion-button.dashboard-selected-icon {
-  background: transparent url('/assets/dashboard-selected-icon.svg') 50% 40% no-repeat padding-box;
+ion-icon.top-navigation {
   opacity: 1;
-  min-height: 50px;
-  min-width: 50px;
+  min-height: 60px;
+  min-width: 60px;
   --box-shadow: none;
   border-radius: 0;
   box-shadow: none;
+}
+
+ion-col .nav-header-text {
+  text-align: center;
+  font: SemiBold 12px/18px Poppins;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
 }
 
 ion-button.profile-icon {
@@ -173,10 +180,12 @@ ion-button.profile-icon {
 }
 
 ion-button.profile-selected-icon {
-  background: transparent url('/assets/profile-selected-icon.svg') 24% 24% no-repeat padding-box;
+  background: transparent url('/assets/profile-selected-icon.svg') 25% 25% no-repeat padding-box;
   opacity: 1;
   min-height: 50px;
   min-width: 50px;
+  height: 60px;
+  width: 60px;
   --box-shadow: none;
   border-radius: 0;
   box-shadow: none;
@@ -204,6 +213,10 @@ ion-button.health-report-selected-icon {
 
 ion-row.menu-container {
   height: 20px;
+}
+
+ion-row.menu-icon-container {
+  height: 50%;
 }
 
 ion-button.menu-outline {
