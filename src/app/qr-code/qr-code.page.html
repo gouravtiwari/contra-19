@@ -11,32 +11,24 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col size="2">
-        <div>
-        </div>
-      </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-button class="dashboard-icon" color="none" shape="none"></ion-button>
-        </div>
-      </ion-col>
+    <ion-row class="menu-icon-container">
       <ion-col size="1">
         <div>
         </div>
       </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-button class="profile-icon" color="none" shape="none"></ion-button>
+      <ion-col size="3">
+        <div class="nav-header-icon">
+          <ion-button class="top-navigation-icon" color="none" shape="none"><ion-icon src="/assets/dashboard-unselected-icon.svg" class="bigger top-navigation"></ion-icon></ion-button>
         </div>
       </ion-col>
-      <ion-col size="1">
-        <div>
+      <ion-col size="3">
+        <div class="nav-header-icon">
+          <ion-button class="top-navigation-icon" color="none" shape="none"><ion-icon src="/assets/profile-icon.svg" class="bigger top-navigation"></ion-icon></ion-button>
         </div>
       </ion-col>
-      <ion-col size="2">
-        <div>
-          <ion-button class="health-report-icon" color="none" shape="none"></ion-button>
+      <ion-col size="3">
+        <div class="nav-header-icon">
+          <ion-button class="top-navigation-icon" color="none" shape="none"><ion-icon src="/assets/health-report-unselected-icon.svg" class="bigger top-navigation"></ion-icon></ion-button>
         </div>
       </ion-col>
       <ion-col size="2">
@@ -44,28 +36,56 @@
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col size="1">
+        <div>
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div class="nav-header-text">
+          Dashboard
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div class="nav-header-text">
+          Profile
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div class="nav-header-text">
+          Diagnostic
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+        </div>
+      </ion-col>
+    </ion-row>
+     <ion-row>
+      <ion-col size="12">
+      </ion-col>
+    </ion-row>
+  </ion-header>
+  <ion-content class="qr-content">
+    <ion-row class="qr-content-row">
       <ion-col size="12">
         <div class="qr-code-title">
           Your QR code
         </div>
       </ion-col>
     </ion-row>
-  </ion-header>
+    <ion-row class="qr-content-img">
+      <ion-col size="12">
+        <div>
+          <ngx-qrcode
+            [(qrc-value)] = "encodeData"
+            [(qrc-element-type)] = "elementType"
+            qrc-class="qrc-class">
+            </ngx-qrcode>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-content>
 </ion-grid>
-
-<ion-content class="qr-content">
-  <ion-row>
-    <ion-col size="12">
-      <div>
-        <ngx-qrcode
-          [(qrc-value)] = "encodeData"
-          [(qrc-element-type)] = "elementType"
-          qrc-class="qrc-class">
-          </ngx-qrcode>
-      </div>
-    </ion-col>
-  </ion-row>
-</ion-content>
 <ion-content class="qr-details">
   <ion-row>
     <ion-col size="12">
