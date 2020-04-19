@@ -121,7 +121,6 @@ ion-button.qr-code-icon {
   box-shadow: none;
 }
 
-
 ion-button.qr-code-selected-icon {
   background: transparent url('/assets/qr-code-selected-icon.svg') 50% 0% no-repeat padding-box;
   opacity: 1;
@@ -147,26 +146,33 @@ ion-button.top-navigation-icon {
   opacity: 1;
   min-height: 60px;
   min-width: 60px;
-  --box-shadow: none;
-  border-radius: 0;
-  box-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
 ion-icon.top-navigation {
   opacity: 1;
   min-height: 60px;
   min-width: 60px;
-  --box-shadow: none;
-  border-radius: 0;
-  box-shadow: none;
+}
+ion-col {
+  display: grid;
+  padding: 0;
+  margin: 0;
+}
+
+ion-col .nav-header-icon {
+  margin: 0;
+  justify-self: center;
 }
 
 ion-col .nav-header-text {
   text-align: center;
-  font: SemiBold 12px/18px Poppins;
+  font-size: 12px;
   letter-spacing: 0px;
   color: #FFFFFF;
   opacity: 1;
+  font-weight: bold;
 }
 
 ion-button.profile-icon {
@@ -216,7 +222,6 @@ ion-row.menu-container {
 }
 
 ion-row.menu-icon-container {
-  height: 50%;
 }
 
 ion-button.menu-outline {
