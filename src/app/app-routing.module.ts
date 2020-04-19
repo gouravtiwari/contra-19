@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'qr-code',
     loadChildren: () => import('./qr-code/qr-code.module').then( m => m.QrCodePageModule)
+  },
+  {
+    path: 'symptoms',
+    loadChildren: () => import('./symptoms/symptoms.module').then( m => m.SymptomsPageModule)
   }
 ];
 @NgModule({
