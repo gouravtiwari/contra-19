@@ -28,17 +28,20 @@ ion-row.qr-content-img {
 }
 
 ion-content.qr-details {
-  font-size: 12px;
+  font-size: 14px;
   margin:0;
   padding:0;
   color: #222222;
   margin: 20px;
-  text-align: justify;
+  text-align: center;
+  letter-spacing: 0.14px;
+  color: #000000;
+  opacity: 1;
   position: absolute;
   z-index: 11;
   top: 68%;
-  left: 5%;
-  width: 90%;
+  left: 15%;
+  width: 70%;
 
   background: none;
   box-shadow: none;

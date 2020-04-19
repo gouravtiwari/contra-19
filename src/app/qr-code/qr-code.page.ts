@@ -99,7 +99,6 @@ export class QrCodePage implements OnInit {
     });
   }
 
-
   symptoms() {
     this.navCtrl.navigateRoot('/symptoms');
   }

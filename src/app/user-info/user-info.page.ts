@@ -29,4 +29,7 @@ export class UserInfoPage implements OnInit {
     this.navCtrl.navigateRoot('/qr-code');
   }
 
+  symptoms() {
+    this.navCtrl.navigateRoot('/symptoms');
+  }
 }
