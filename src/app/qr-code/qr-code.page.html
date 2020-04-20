@@ -98,34 +98,11 @@
 
 <ion-footer>
   <ion-row>
-    <ion-col size="2">
-      <div>
-      </div>
+    <ion-col class="ion-justify-content-center" size=6>
+      <ion-button class="bottom-nav qr-code-selected-icon" color="none" shape="none" (click)="qrCode()"></ion-button>
     </ion-col>
-    <ion-col size="2">
-      <ion-button class="qr-code-selected-icon" color="none" shape="none" disabled="disabled"></ion-button>
-    </ion-col>
-    <ion-col size="1">
-      <div>
-      </div>
-    </ion-col>
-    <ion-col size="2" style="text-align: center; color: #ffffff;">
-      <div>|<br/>|<br/>|
-      </div>
-    </ion-col>
-    <ion-col size="1">
-      <div>
-      </div>
-    </ion-col>
-    <ion-col size="2">
-      <div>
-        <ion-button (click)="scanCode()" class="qr-code-scanner-icon" color="none" shape="none">
-        </ion-button>
-      </div>
-    </ion-col>
-    <ion-col size="2">
-      <div>
-      </div>
+    <ion-col class="ion-justify-content-center" size=6 style='border-left: 1px solid white'>
+      <ion-button class="bottom-nav qr-code-scanner-icon" color="none" shape="none" (click)="scanCode()"></ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>
