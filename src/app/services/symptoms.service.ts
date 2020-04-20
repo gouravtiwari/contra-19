@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SymptomsService {
-  url = 'https://c19-tracker.herokuapp.com'
 
   constructor(private http: HttpClient) { }
 
   symptomsShow(idToken, observed_date): Observable<any> {
-    return this.http.get(`${this.url}/symptoms/${observed_date}?idToken=${idToken}`);
+    return this.http.get(`${environment.apiUrl}/symptoms/${observed_date}?idToken=${idToken}`);
   }
 
   symptomsUpdate(idToken, observed_date): Observable<any> {
@@ -35,7 +35,7 @@ export class SymptomsService {
       }
     }
 
-    return this.http.patch(`${this.url}/symptoms/${observed_date}`, requestData, httpOptions);
+    return this.http.patch(`${environment.apiUrl}/symptoms/${observed_date}`, requestData, httpOptions);
   }
 
   symptomsCreate(idToken): Observable<any> {
@@ -59,6 +59,6 @@ export class SymptomsService {
       }
     }
 
-    return this.http.post(`${this.url}/symptoms`, requestData, httpOptions);
+    return this.http.post(`${environment.apiUrl}/symptoms`, requestData, httpOptions);
   }
 }
