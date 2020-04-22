@@ -4,6 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UsersService } from './../services/users.service';
+import { AuthenticationService } from './../services/authentication.service';
 
 @Component({
   selector: 'app-disclaimer',
@@ -23,6 +24,7 @@ export class DisclaimerPage implements OnInit {
     private splashScreen: SplashScreen,
     private menuCtrl: MenuController,
     private usersService: UsersService,
+    private authService: AuthenticationService,
     private navCtrl: NavController) {
   }
 
@@ -39,12 +41,18 @@ export class DisclaimerPage implements OnInit {
     this.openLoader();
     this.signInAnonymously().then(
       (userData) => {
-        console.log(userData);
-        // this.registerUserToBackend(userData.user.xa);
+        console.log("SignInAnonymously with id token: " + JSON.stringify(userData));
+        // Create a new user in backend with idToken
         this.usersService.signUp(userData.user.xa).subscribe(
           data => { return data['_body']; },
           error => { console.log(error); }
         );
+
+        // Store locally
+        const user = { 'idToken': userData.user.xa };
+        this.authService.setCurrentUser(user);
+
+        console.log("User created with id token: " + JSON.stringify(user));
         this.navCtrl.navigateRoot('/user-info');
       }
     ).catch(err => {

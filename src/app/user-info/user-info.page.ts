@@ -18,11 +18,14 @@ export class UserInfoPage implements OnInit {
   }
 
   register(form) {
-  console.log("register");
-  console.log(form.value);
-   this.userService.usersUpdate(form.value).subscribe((res) => {
-    // this.router.navigateByUrl('home');
-   });
+    console.log("register");
+    console.log(form.value);
+
+    // This needs testing, as API is returning 404
+    this.userService.usersUpdate(form.value).subscribe((res) => {
+
+      // this.router.navigateByUrl('home');
+    });
   }
 
   qrCode() {

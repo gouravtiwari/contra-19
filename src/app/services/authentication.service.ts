@@ -19,19 +19,16 @@ export class AuthenticationService {
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
-    setCustomCurrentUser(){
-      let user =  {
-          'idToken': 'currentUser.idToken',
-          "age": "60",
-          "gender": "transgender", // Possible values: 'male', 'female', 'transgender'
-          "zip_code": "400061",
-          "country": "", // Not implemented
-          "status": "infected"
-        };
-        const userObj: User = user as User;
+    setCurrentUser(user) {
+      const userObj: User = user as User;
 
       localStorage.setItem('currentUser', JSON.stringify(user))
       this.currentUserSubject.next(userObj);
+    }
+    updateCurrentUser(currentUser, user) {
+      user.idToken = currentUser.idToken;
+      this.setCurrentUser(user);
+      console.log("Stored updated user locally: ", JSON.stringify(this.currentUserValue));
     }
     login(username: string, password: string) {
         // to try local use this URL /users/authenticate

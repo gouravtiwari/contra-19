@@ -38,11 +38,11 @@
           <div padding>
             <ion-item>
               <ion-label>Age</ion-label>
-              <ion-input  name="Age" type="text" placeholder="30" slot='end' autofocus=true min=1 max=100 ngModel required></ion-input>
+              <ion-input  name="age" type="text" placeholder="30" slot='end' autofocus=true min=1 max=100 ngModel required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Gender</ion-label>
-              <ion-select placeholder='Select Gender'>
+              <ion-select name="gender" placeholder='Select Gender' ngModel>
                 <ion-select-option value="male">Male</ion-select-option>
                 <ion-select-option value="female">Female</ion-select-option>
                 <ion-select-option value="transgender">Transgender</ion-select-option>
@@ -54,14 +54,14 @@
             </ion-item>
             <ion-item>
               <ion-label>Country</ion-label>
-              <ion-select placeholder='Select Country' slot='end'>
+              <ion-select name="country" placeholder='Select Country' slot='end' ngModel>
                 <ion-select-option value="usa">USA</ion-select-option>
                 <ion-select-option value="india">India</ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item>
               <ion-label>Status</ion-label>
-              <ion-select placeholder='Select Status' slot='end'>
+              <ion-select name="status" placeholder='Select Status' slot='end' ngModel>
                 <ion-select-option value="healthy">Healthy</ion-select-option>
                 <ion-select-option value="infected">Tested Positive</ion-select-option>
                 <ion-select-option value="in_contact_with_infected">In contact with Positive</ion-select-option>

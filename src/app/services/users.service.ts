@@ -9,12 +9,17 @@ import { environment } from '../../environments/environment';
 })
 export class UsersService {
 
-  constructor(private http: HttpClient,private authService: AuthenticationService) { }
+  constructor(private http: HttpClient,
+    private authService: AuthenticationService) { }
 
   usersShow(idToken): Observable<any> {
     return this.http.get(`${environment.apiUrl}/users/${idToken}`);
   }
 
+  /**
+   * Updates a user's profile
+   * Returns a subscriber object
+   */
   usersUpdate(user): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -22,23 +27,26 @@ export class UsersService {
         'Content-Type':  'application/json'
       })
     };
-    this.authService.setCustomCurrentUser(); //Just used for setting default user remove it once login is setup
 
-    let currentUser = this.authService.currentUserValue;
-    console.log(currentUser);
-    let idToken = currentUser.idToken;
-    let requestData = {
-      'idToken': idToken,
+    const currentUser = this.authService.currentUserValue;
+    const requestData = {
+      'idToken': currentUser.idToken,
       "user": user
-    }
+    };
+
+    // Update current user locally to persist values
+    this.authService.updateCurrentUser(currentUser, user);
 
     console.log('User updating-------------------')
-    console.log(idToken);
-    return this.http.patch(`${environment.apiUrl}/users/${idToken}`, requestData, httpOptions);
+    console.log(currentUser.idToken);
+    return this.http.patch(`${environment.apiUrl}/users/${currentUser.idToken}`, requestData, httpOptions);
   }
 
+  /**
+   * Creates user with id token
+   * Returns a subscriber object
+   */
   signUp(idToken): Observable<any> {
-    console.log("in signup post------------------------", idToken);
     const httpOptions = {
       headers: new HttpHeaders({
         "Accept": 'application/json',
@@ -48,7 +56,7 @@ export class UsersService {
 
     let requestData = { 'idToken': idToken }
 
-    console.log('User registering-------------------')
+    console.log('User registering------------------- idToken: ', idToken);
     return this.http.post(`${environment.apiUrl}/users`, requestData, httpOptions);
   }
 }
