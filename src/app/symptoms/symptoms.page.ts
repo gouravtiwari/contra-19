@@ -8,6 +8,9 @@ import { Router } from  "@angular/router";
   styleUrls: ['./symptoms.page.scss'],
 })
 export class SymptomsPage implements OnInit {
+  today: string;
+  minYear: number;
+  maxYear: number;
 
   constructor(private router: Router,
     private platform: Platform,
@@ -15,6 +18,10 @@ export class SymptomsPage implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.today = new Date().toISOString();
+    this.maxYear = new Date().getFullYear();
+    this.minYear = this.maxYear - 1;
+
   }
 
   userProfile() {

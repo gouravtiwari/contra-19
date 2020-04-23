@@ -27,8 +27,8 @@
   <ion-grid>
     <ion-row>
       <ion-col class="ion-justify-content-center">
-        <h1>
-          My Profile
+        <h1 class="page-content-title">
+          Anonymous Profile
         </h1>
       </ion-col>
     </ion-row>
@@ -38,11 +38,11 @@
           <div padding>
             <ion-item>
               <ion-label>Age</ion-label>
-              <ion-input  name="age" type="text" placeholder="30" slot='end' autofocus=true min=1 max=100 ngModel required></ion-input>
+              <ion-input  name="age" type="text" placeholder="30" slot='end' autofocus=true min=1 max=130 ngModel ngModel required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Gender</ion-label>
-              <ion-select name="gender" placeholder='Select Gender' ngModel>
+              <ion-select name="gender" placeholder='Select Gender' slot="end" ngModel>
                 <ion-select-option value="male">Male</ion-select-option>
                 <ion-select-option value="female">Female</ion-select-option>
                 <ion-select-option value="transgender">Transgender</ion-select-option>
