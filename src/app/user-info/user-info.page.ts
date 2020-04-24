@@ -35,4 +35,8 @@ export class UserInfoPage implements OnInit {
   symptoms() {
     this.navCtrl.navigateRoot('/symptoms');
   }
+
+  dashboard() {
+    this.navCtrl.navigateRoot('/dashboard');
+  }
 }

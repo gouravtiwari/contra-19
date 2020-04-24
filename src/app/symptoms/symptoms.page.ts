@@ -31,4 +31,8 @@ export class SymptomsPage implements OnInit {
   qrCode() {
     this.navCtrl.navigateRoot('/qr-code');
   }
+
+  dashboard() {
+    this.navCtrl.navigateRoot('/dashboard');
+  }
 }

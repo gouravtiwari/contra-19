@@ -103,4 +103,8 @@ export class QrCodePage implements OnInit {
     this.navCtrl.navigateRoot('/symptoms');
   }
 
+  dashboard() {
+    this.navCtrl.navigateRoot('/dashboard');
+  }
+
 }
