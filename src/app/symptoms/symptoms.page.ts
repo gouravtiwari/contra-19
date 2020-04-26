@@ -9,8 +9,8 @@ import { Router } from  "@angular/router";
 })
 export class SymptomsPage implements OnInit {
   today: string;
-  minYear: number;
-  maxYear: number;
+  minDate: string;
+  maxDate: string;
 
   constructor(private router: Router,
     private platform: Platform,
@@ -18,9 +18,13 @@ export class SymptomsPage implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.today = new Date().toISOString();
-    this.maxYear = new Date().getFullYear();
-    this.minYear = this.maxYear - 1;
+    let today = new Date();
+    let twoWeeksAgo = new Date();
+    twoWeeksAgo.setDate(today.getDate() - 14);
+
+    this.today = today.toISOString();
+    this.maxDate = this.today;
+    this.minDate = twoWeeksAgo.toISOString();
 
   }
 

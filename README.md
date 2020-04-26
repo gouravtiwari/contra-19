@@ -90,3 +90,4 @@ On Mac
 - [Barcode/QR code generator/scanner](https://enappd.com/blog/ionic-4-qr-code-barcode-scanning/82/)
 - [Anonymous login with Firebase](https://enappd.com/blog/firebase-anonymous-login-in-ionic-4/37/)
 - [Graphics](https://github.com/soroushchehresa/awesome-coronavirus)
+- [DateTime Picker](https://ionicframework.com/docs/api/datetime)
