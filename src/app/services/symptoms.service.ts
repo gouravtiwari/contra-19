@@ -24,7 +24,23 @@ export class SymptomsService {
   }
 
   getSymptomRecords() {
-    return JSON.parse(localStorage.getItem('symptomRecords'));
+    const symptomRecords = localStorage.getItem('symptomRecords');
+    if (symptomRecords) {
+      return JSON.parse(symptomRecords);
+    } else {
+      return null;
+    }
+  }
+
+  getSymptomRecord(date) {
+    const symptomRecords = this.getSymptomRecords();
+
+    if (symptomRecords) {
+      return symptomRecords[new Date(date).toDateString()];
+    } else {
+      return null;
+    }
+
   }
 
   addOrUpdateSymptom(date, symptoms) {

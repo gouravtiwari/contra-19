@@ -21,17 +21,7 @@ export class SymptomsPage implements OnInit {
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
     private symptomsService: SymptomsService
-    ) {
-      this.symptomsFormGroup = this.formBuilder.group({
-        observed_date: [''],
-        fever: ['', Validators.required],
-        weakness: [false],
-        dry_cough: [false],
-        sore_throat: [false],
-        runny_nose: [false],
-        difficulty_in_breathing: [false]
-      });
-    }
+    ) { }
 
   ngOnInit() {
     const today = new Date();
@@ -42,14 +32,22 @@ export class SymptomsPage implements OnInit {
     this.maxDate = this.today;
     this.minDate = new Date(twoWeeksAgo.toDateString()).toISOString();
 
+    const currentSymptoms = this.symptomsService.getSymptomRecord(this.today);
+
+    this.symptomsFormGroup = this.formBuilder.group({
+      observed_date: [this.today],
+      fever: [(currentSymptoms && currentSymptoms.fever) || '', Validators.required],
+      weakness: [ currentSymptoms ? currentSymptoms.weakness : false ],
+      dry_cough: [ currentSymptoms ? currentSymptoms.dry_cough : false ],
+      sore_throat: [ currentSymptoms ? currentSymptoms.sore_throat : false ],
+      runny_nose: [ currentSymptoms ? currentSymptoms.runny_nose : false ],
+      difficulty_in_breathing: [ currentSymptoms ? currentSymptoms.difficulty_in_breathing : false ]
+    });
+
   }
 
   symptoms() {
-    console.log("Symptoms");
-    console.log();
-
     const res = this.symptomsService.update(this.symptomsFormGroup.value);
-    console.log(res);
   }
 
   userProfile() {
