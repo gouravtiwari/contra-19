@@ -32,43 +32,43 @@
         </h1>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col class="ion-justify-content-center">
-        <ion-item>
-          <ion-datetime [value]="today" [min]="minDate" [max]="maxDate"
-            [dayShortNames]="customDayShortNames"
-            displayFormat="DDD MMM DD, YYYY"
-            monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"></ion-datetime>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <form #form="ngForm" (ngSubmit)="symptoms(form)">
+    <form [formGroup]="symptomsFormGroup" (ngSubmit)="symptoms()">
       <ion-row>
-        <ion-col  align-self-center size-md=8 push-md=2 size-lg=6 push-lg=3>
+        <ion-col class="ion-justify-content-center">
+          <ion-item>
+            <ion-datetime formControlName="observed_date" [value]="today" [min]="minDate" [max]="maxDate"
+              [dayShortNames]="customDayShortNames"
+              displayFormat="DDD MMM DD, YYYY"
+              monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col align-self-center size-md=8 push-md=2 size-lg=6 push-lg=3>
           <div padding>
             <ion-item>
               <ion-label>Fever</ion-label>
-              <ion-input name="fever" type="text" inputmode="decimal" placeholder="98.6" slot='end' autofocus=true min=95 max=110 ngModel required></ion-input>
+              <ion-input formControlName="fever" type="text" inputmode="decimal" placeholder="98.6" slot='end' autofocus=true min=95 max=110 required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Weakness</ion-label>
-              <ion-toggle name='weakness' color="primary" slot="end"></ion-toggle>
+              <ion-toggle formControlName='weakness' color="primary" slot="end"></ion-toggle>
             </ion-item>
             <ion-item>
               <ion-label>Dry Cough</ion-label>
-              <ion-toggle name='dry_cough' color="primary" slot="end"></ion-toggle>
+              <ion-toggle formControlName='dry_cough' color="primary" slot="end"></ion-toggle>
             </ion-item>
             <ion-item>
               <ion-label>Sore Throat</ion-label>
-              <ion-toggle name='sore_throat' color="primary" slot="end"></ion-toggle>
+              <ion-toggle formControlName='sore_throat' color="primary" slot="end"></ion-toggle>
             </ion-item>
             <ion-item>
               <ion-label>Runny Nose</ion-label>
-              <ion-toggle name='runny_nose' color="primary" slot="end"></ion-toggle>
+              <ion-toggle formControlName='runny_nose' color="primary" slot="end"></ion-toggle>
             </ion-item>
             <ion-item>
               <ion-label>Difficulty in Breathing</ion-label>
-              <ion-toggle name='difficulty_in_breathing' color="primary" slot="end"></ion-toggle>
+              <ion-toggle formControlName='difficulty_in_breathing' color="primary" slot="end"></ion-toggle>
             </ion-item>
           </div>
         </ion-col>
@@ -76,9 +76,9 @@
       <ion-row>
         <ion-col size-md=8 push-md=2 size-lg=6 push-lg=3>
           <ion-row>
-            <ion-col size=6 class="ion-justify-content-center">
-              <ion-button color="buttons ion-float-left" shape="round" size="medium" [disabled]="form.invalid" class="unselected">Cancel</ion-button>
-            </ion-col>
+            <!-- <ion-col size=6 class="ion-justify-content-center">
+              <ion-button color="buttons ion-float-left" shape="round" size="medium" [disabled]="formGroup.invalid" class="unselected">Cancel</ion-button>
+            </ion-col> -->
             <ion-col size=6 class="ion-justify-content-center">
               <ion-button color="buttons ion-float-left" shape="round" size="medium" type="submit" >Save</ion-button>
             </ion-col>
