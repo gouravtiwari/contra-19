@@ -34,9 +34,10 @@ export class SymptomsPage implements OnInit {
 
     const currentSymptoms = this.symptomsService.getSymptomRecord(this.today);
 
+    // initialize form with selected dates
     this.symptomsFormGroup = this.formBuilder.group({
       observed_date: [this.today],
-      fever: [(currentSymptoms && currentSymptoms.fever) || '', Validators.required],
+      fever: [ (currentSymptoms && currentSymptoms.fever) || '' ],
       weakness: [ currentSymptoms ? currentSymptoms.weakness : false ],
       dry_cough: [ currentSymptoms ? currentSymptoms.dry_cough : false ],
       sore_throat: [ currentSymptoms ? currentSymptoms.sore_throat : false ],
@@ -48,6 +49,29 @@ export class SymptomsPage implements OnInit {
 
   symptoms() {
     const res = this.symptomsService.update(this.symptomsFormGroup.value);
+  }
+
+  reloadSymptoms(event) {
+    const selectedDate = new Date(event.target.value);
+    const symptomsByDate = this.symptomsService.getSymptomRecord(selectedDate);
+
+    if (symptomsByDate) {
+      // update form with symptoms for the selected date
+      this.symptomsFormGroup.get('fever').setValue(symptomsByDate.fever);
+      this.symptomsFormGroup.get('weakness').setValue(symptomsByDate.weakness);
+      this.symptomsFormGroup.get('dry_cough').setValue(symptomsByDate.dry_cough);
+      this.symptomsFormGroup.get('sore_throat').setValue(symptomsByDate.sore_throat);
+      this.symptomsFormGroup.get('runny_nose').setValue(symptomsByDate.runny_nose);
+      this.symptomsFormGroup.get('difficulty_in_breathing').setValue(symptomsByDate.difficulty_in_breathing);
+    } else {
+      // reset form when there are no symptoms for the selected date
+      this.symptomsFormGroup.get('fever').setValue('');
+      this.symptomsFormGroup.get('weakness').setValue(false);
+      this.symptomsFormGroup.get('dry_cough').setValue(false);
+      this.symptomsFormGroup.get('sore_throat').setValue(false);
+      this.symptomsFormGroup.get('runny_nose').setValue(false);
+      this.symptomsFormGroup.get('difficulty_in_breathing').setValue(false);
+    }
   }
 
   userProfile() {

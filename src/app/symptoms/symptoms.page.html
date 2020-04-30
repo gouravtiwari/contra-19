@@ -39,7 +39,8 @@
             <ion-datetime formControlName="observed_date" [value]="today" [min]="minDate" [max]="maxDate"
               [dayShortNames]="customDayShortNames"
               displayFormat="DDD MMM DD, YYYY"
-              monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"></ion-datetime>
+              monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
+              (ionChange)="reloadSymptoms($event)"></ion-datetime>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -48,7 +49,7 @@
           <div padding>
             <ion-item>
               <ion-label>Fever</ion-label>
-              <ion-input formControlName="fever" type="text" inputmode="decimal" placeholder="98.6" slot='end' autofocus=true min=95 max=110 required></ion-input>
+              <ion-input formControlName="fever" type="text" inputmode="decimal" placeholder="- -" slot='end' autofocus=true min=95 max=110 required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Weakness</ion-label>
