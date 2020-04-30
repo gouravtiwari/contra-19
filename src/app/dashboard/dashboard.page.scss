@@ -1,0 +1,30 @@
+.dashboard-card-background {
+  background: #F4FFFF 0% 0% no-repeat padding-box;
+  padding: 8% 0;
+  margin: 10% 0;
+  text-align: center;
+  border-left-style: solid;
+}
+
+.dashboard-card-background.danger {
+  border-color: #EA2222;
+}
+
+.dashboard-card-background.warning {
+  border-color: #FFAC4B;
+}
+
+.dashboard-card-background.normal {
+  border-color: #EA2222;
+}
+
+.dashboard-card-header {
+  font-size: 2em;
+  font-color: #20CFD9;
+  padding: 0 0 5% 0;
+}
+
+.dashboard-card-text {
+  font-size: 1.5em;
+  font-color: #313450;
+}
