@@ -3,6 +3,8 @@ import { NavController, Platform } from '@ionic/angular';
 import { Chart } from 'chart.js';
 import { getFormattedDatesSinceDaysAgo } from '../utils/date-extension';
 import { SymptomsService } from '../services/symptoms.service';
+import { UsersService } from '../services/users.service';
+import { AuthenticationService } from './../services/authentication.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +23,9 @@ export class DashboardPage implements OnInit {
 
   constructor(private platform: Platform,
     private navCtrl: NavController,
-    private symptomsService: SymptomsService) {}
+    private symptomsService: SymptomsService,
+    private authenticationService: AuthenticationService,
+    private userService: UsersService) {}
 
   ngOnInit() {
     this.symptomToCanvasMap = {
@@ -39,6 +43,11 @@ export class DashboardPage implements OnInit {
     this.barChartMethod('sore_throat');
     this.barChartMethod('runny_nose');
     this.barChartMethod('difficulty_in_breathing');
+    // This needs testing, as API is returning 404
+    this.userService.usersShow(this.authenticationService.currentUserValue.idToken).subscribe((res) => {
+      console.log(res);
+      // this.router.navigateByUrl('home');
+    });
   }
 
   symptoms() {
