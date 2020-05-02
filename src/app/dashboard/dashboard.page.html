@@ -23,7 +23,7 @@
   </ion-grid>
 </ion-header>
 
-<ion-content slot="fixed" scrollY=false>
+<ion-content slot="fixed">
   <ion-grid>
     <ion-row>
       <ion-col class="ion-justify-content-center">
@@ -78,6 +78,78 @@
         </ion-row>
       </ion-col>
       <ion-col size=1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12>
+        <ion-card>
+          <ion-card-header>
+            <div class="dashboard-card-header">Fever report</div>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #feverCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12>
+        <ion-card>
+          <ion-card-header>
+            <div class="dashboard-card-header">Weakness report</div>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #weaknessCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12>
+        <ion-card>
+          <ion-card-header>
+            <div class="dashboard-card-header">Dry cough report</div>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #dryCoughCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12>
+        <ion-card>
+          <ion-card-header>
+            <div class="dashboard-card-header">Sore throat report</div>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #soreThroatCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12>
+        <ion-card>
+          <ion-card-header>
+            <div class="dashboard-card-header">Runny nose report</div>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #runnyNoseCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12>
+        <ion-card>
+          <ion-card-header>
+            <div class="dashboard-card-header">Difficulty in Breathing report</div>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #difficultyInBreathingCanvas></canvas>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

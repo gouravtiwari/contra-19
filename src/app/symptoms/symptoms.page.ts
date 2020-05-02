@@ -33,18 +33,8 @@ export class SymptomsPage implements OnInit {
     this.minDate = new Date(twoWeeksAgo.toDateString()).toISOString();
 
     const currentSymptoms = this.symptomsService.getSymptomRecord(this.today);
-
-    // initialize form with selected dates
-    this.symptomsFormGroup = this.formBuilder.group({
-      observed_date: [this.today],
-      fever: [ (currentSymptoms && currentSymptoms.fever) || '' ],
-      weakness: [ currentSymptoms ? currentSymptoms.weakness : false ],
-      dry_cough: [ currentSymptoms ? currentSymptoms.dry_cough : false ],
-      sore_throat: [ currentSymptoms ? currentSymptoms.sore_throat : false ],
-      runny_nose: [ currentSymptoms ? currentSymptoms.runny_nose : false ],
-      difficulty_in_breathing: [ currentSymptoms ? currentSymptoms.difficulty_in_breathing : false ]
-    });
-
+    // initialize form with selected date
+    this.initializeSymptomsForm(currentSymptoms);
   }
 
   symptoms() {
@@ -57,21 +47,41 @@ export class SymptomsPage implements OnInit {
 
     if (symptomsByDate) {
       // update form with symptoms for the selected date
-      this.symptomsFormGroup.get('fever').setValue(symptomsByDate.fever);
-      this.symptomsFormGroup.get('weakness').setValue(symptomsByDate.weakness);
-      this.symptomsFormGroup.get('dry_cough').setValue(symptomsByDate.dry_cough);
-      this.symptomsFormGroup.get('sore_throat').setValue(symptomsByDate.sore_throat);
-      this.symptomsFormGroup.get('runny_nose').setValue(symptomsByDate.runny_nose);
-      this.symptomsFormGroup.get('difficulty_in_breathing').setValue(symptomsByDate.difficulty_in_breathing);
+      this.updateSymptomsForm(symptomsByDate);
     } else {
       // reset form when there are no symptoms for the selected date
-      this.symptomsFormGroup.get('fever').setValue('');
-      this.symptomsFormGroup.get('weakness').setValue(false);
-      this.symptomsFormGroup.get('dry_cough').setValue(false);
-      this.symptomsFormGroup.get('sore_throat').setValue(false);
-      this.symptomsFormGroup.get('runny_nose').setValue(false);
-      this.symptomsFormGroup.get('difficulty_in_breathing').setValue(false);
+      this.resetSymptomsForm();
     }
+  }
+
+  initializeSymptomsForm(currentSymptoms) {
+    this.symptomsFormGroup = this.formBuilder.group({
+      observed_date: [this.today],
+      fever: [ (currentSymptoms && currentSymptoms.fever) || '' ],
+      weakness: [ currentSymptoms ? currentSymptoms.weakness : false ],
+      dry_cough: [ currentSymptoms ? currentSymptoms.dry_cough : false ],
+      sore_throat: [ currentSymptoms ? currentSymptoms.sore_throat : false ],
+      runny_nose: [ currentSymptoms ? currentSymptoms.runny_nose : false ],
+      difficulty_in_breathing: [ currentSymptoms ? currentSymptoms.difficulty_in_breathing : false ]
+    });
+  }
+
+  resetSymptomsForm() {
+    this.symptomsFormGroup.get('fever').setValue('');
+    this.symptomsFormGroup.get('weakness').setValue(false);
+    this.symptomsFormGroup.get('dry_cough').setValue(false);
+    this.symptomsFormGroup.get('sore_throat').setValue(false);
+    this.symptomsFormGroup.get('runny_nose').setValue(false);
+    this.symptomsFormGroup.get('difficulty_in_breathing').setValue(false);
+  }
+
+  updateSymptomsForm(symptomsByDate) {
+    this.symptomsFormGroup.get('fever').setValue(symptomsByDate.fever);
+    this.symptomsFormGroup.get('weakness').setValue(symptomsByDate.weakness);
+    this.symptomsFormGroup.get('dry_cough').setValue(symptomsByDate.dry_cough);
+    this.symptomsFormGroup.get('sore_throat').setValue(symptomsByDate.sore_throat);
+    this.symptomsFormGroup.get('runny_nose').setValue(symptomsByDate.runny_nose);
+    this.symptomsFormGroup.get('difficulty_in_breathing').setValue(symptomsByDate.difficulty_in_breathing);
   }
 
   userProfile() {

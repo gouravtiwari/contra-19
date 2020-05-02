@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { getDatesSinceDaysAgo } from '../utils/date-extension';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,23 @@ export class SymptomsService {
     } else {
       return null;
     }
+  }
 
+  getSymptomRecordsSinceDaysAgo(numberOfDays, symptomType) {
+    const that = this;
+    return getDatesSinceDaysAgo(numberOfDays).map(function(date) {
+      const symptomRecord = that.getSymptomRecord(date);
+
+      if (symptomRecord) {
+        if (symptomType === 'fever') {
+          return symptomRecord[symptomType] === '' ? null : symptomRecord[symptomType];
+        } else {
+          return symptomRecord[symptomType] ? 1 : 0;
+        }
+      } else {
+        return null;
+      }
+    })
   }
 
   addOrUpdateSymptom(date, symptoms) {
