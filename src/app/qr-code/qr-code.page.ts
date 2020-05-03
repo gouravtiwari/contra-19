@@ -81,7 +81,7 @@ export class QrCodePage implements OnInit {
       this.userConnectionsService.userConnectionsCreate(
         this.authService.currentUserValue.idToken,
         this.scannedData,
-        'direct'
+        'qr'
       )
         .subscribe(
           data => { return data['_body']; },
