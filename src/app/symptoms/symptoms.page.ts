@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
-import {  Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { NavController, Platform, ToastController } from '@ionic/angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from  "@angular/router";
 import { SymptomsService } from '../services/symptoms.service';
 
@@ -19,6 +19,7 @@ export class SymptomsPage implements OnInit {
   constructor(private router: Router,
     private platform: Platform,
     private navCtrl: NavController,
+    private toastCtrl: ToastController,
     private formBuilder: FormBuilder,
     private symptomsService: SymptomsService
     ) { }
@@ -37,8 +38,30 @@ export class SymptomsPage implements OnInit {
     this.initializeSymptomsForm(currentSymptoms);
   }
 
-  symptoms() {
-    const res = this.symptomsService.update(this.symptomsFormGroup.value);
+  async symptoms() {
+    const symptomsFormValues = this.symptomsFormGroup.value;
+
+    if ((symptomsFormValues.fever && symptomsFormValues.fever !== '') ||
+          symptomsFormValues.weakness ||
+          symptomsFormValues.dry_cough ||
+          symptomsFormValues.sore_throat ||
+          symptomsFormValues.runny_nose ||
+          symptomsFormValues.difficulty_in_breathing) {
+      this.symptomsService.update(this.symptomsFormGroup.value);
+      const toast = await this.toastCtrl.create({
+        message: 'Symptoms are logged successfully.',
+        duration: 2000,
+        color: 'primary'
+      });
+      toast.present();
+    } else {
+      const toast = await this.toastCtrl.create({
+        message: 'Please enter at least one symptom',
+        duration: 2000,
+        color: 'warning'
+      });
+      toast.present();
+    }
   }
 
   reloadSymptoms(event) {
