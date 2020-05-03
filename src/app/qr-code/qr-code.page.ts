@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from  "@angular/router";
-import { NavController, Platform } from '@ionic/angular';
+import { NavController, Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthenticationService } from './../services/authentication.service';
@@ -27,6 +27,7 @@ export class QrCodePage implements OnInit {
   constructor(private fireauth: AngularFireAuth,
     private router: Router,
     private platform: Platform,
+    public loadingController: LoadingController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private barcodeScanner: BarcodeScanner,
@@ -42,26 +43,12 @@ export class QrCodePage implements OnInit {
   }
 
   ngOnInit() {
-
-    // this function call is only for temporarily,
-    // it is there to get uid until we have navigation sorted,
-    // once complete navigation is done, we will get uid by:
-    // this.fireauth.auth.getUid()
-    this.signInAnonymously().then((data) => {
-      if (data.user && data.user.xa) {
-        this.encodeData = data.user.xa;
-        this.barcodeScannerOptions = {
-          showTorchButton: true,
-          showFlipCameraButton: true
-        };
-      }
-      console.log(this.encodeData);
-    }).catch((error) => {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(`login failed ${error.message}`)
-    });
+    this.reInitializeIdToken();
+    this.encodeData = this.authService.currentUserValue.idToken;
+    this.barcodeScannerOptions = {
+      showTorchButton: true,
+      showFlipCameraButton: true
+    };
   }
 
   encodedText() {
@@ -93,7 +80,7 @@ export class QrCodePage implements OnInit {
   }
 
   userProfile() {
-    this.navCtrl.navigateRoot('/user-info');
+    this.navCtrl.navigateRoot('/disclaimer');
   }
 
   // this function is only for temporarily,
@@ -111,6 +98,44 @@ export class QrCodePage implements OnInit {
         console.log(`login failed ${error.message}`)
       });
     });
+  }
+
+
+  reInitializeIdToken() {
+    // Re-initialize when user is loggedIn
+    if (this.authService.currentUserValue) {
+      if (this.authService.currentUserValue['savedOn'] !== new Date().toDateString()) {
+        this.openLoader();
+        this.signInAnonymously().then(
+          (userData) => {
+            // Store locally
+            const user = { 'idToken': userData.user.xa, 'savedOn': new Date().toDateString() };
+            this.authService.setCurrentUser(user);
+
+            console.log("New id token: " + JSON.stringify(user));
+          }
+        ).catch(err => {
+          if (err) {
+            console.log(err);
+            //this.presentToast(`${err}`, true, 'bottom', 2100);
+          }
+
+        }).then(el => this.closeLoading());
+      }
+    } else {
+      this.navCtrl.navigateRoot('/user-info');
+    }
+  }
+
+  async openLoader() {
+    const loading = await this.loadingController.create({
+      message: 'Please Wait ...',
+      duration: 2000
+    });
+    await loading.present();
+  }
+  async closeLoading() {
+    return await this.loadingController.dismiss();
   }
 
   symptoms() {
