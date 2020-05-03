@@ -4,6 +4,8 @@ import { Router } from  "@angular/router";
 import { NavController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthenticationService } from './../services/authentication.service';
+import { UserConnectionsService } from './../services/user-connections.service';
 
 import {
   BarcodeScannerOptions,
@@ -28,7 +30,9 @@ export class QrCodePage implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private barcodeScanner: BarcodeScanner,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private authService: AuthenticationService,
+    private userConnectionsService: UserConnectionsService
   ) {
     //Options
     this.barcodeScannerOptions = {
@@ -73,6 +77,16 @@ export class QrCodePage implements OnInit {
     this.barcodeScanner.scan().then(barcodeData => {
       alert('Barcode data ' + JSON.stringify(barcodeData));
       this.scannedData = barcodeData;
+
+      this.userConnectionsService.userConnectionsCreate(
+        this.authService.currentUserValue.idToken,
+        this.scannedData,
+        'direct'
+      )
+        .subscribe(
+          data => { return data['_body']; },
+          error => { console.log(error); }
+        );
     }).catch(err => {
       console.log('Error', err);
     });
