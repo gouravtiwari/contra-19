@@ -19,6 +19,8 @@ export class DashboardPage implements OnInit {
   @ViewChild('runnyNoseCanvas', {static: true}) runnyNoseCanvas;
   @ViewChild('difficultyInBreathingCanvas', {static: true}) difficultyInBreathingCanvas;
 
+  @ViewChild('symptomsCount', {static: true}) symptomsCount;
+
   symptomToCanvasMap: any;
 
   constructor(private platform: Platform,
@@ -48,6 +50,7 @@ export class DashboardPage implements OnInit {
       console.log(res);
       // this.router.navigateByUrl('home');
     });
+    this.setSymptomsCount(this.symptomsCount);
   }
 
   symptoms() {
@@ -63,7 +66,6 @@ export class DashboardPage implements OnInit {
   }
 
   barChartMethod(symptomType) {
-    console.log(this.symptomsService.getSymptomRecordsSinceDaysAgo(14, symptomType));
     new Chart(this.symptomToCanvasMap[symptomType].nativeElement, {
       type: 'bar',
       data: {
@@ -138,5 +140,38 @@ export class DashboardPage implements OnInit {
         }
       }
     });
+  }
+
+  setSymptomsCount(element) {
+    const today = new Date();
+    let currentSymptoms = this.symptomsService.getSymptomRecord(new Date(today.toDateString()).toISOString());
+
+    if (!currentSymptoms) {
+      const yesterday = new Date();
+      yesterday.setDate(today.getDate() - 1);
+
+      currentSymptoms = this.symptomsService.getSymptomRecord(new Date(yesterday.toDateString()).toISOString());
+    }
+
+    let count = 0;
+
+    if (currentSymptoms) {
+      count = Object.keys(currentSymptoms).filter((key) => {
+        if (currentSymptoms[key]) {
+          if (typeof(currentSymptoms[key]) === 'boolean' && currentSymptoms[key]) {
+            // if it's boolean and it's true, then consider it as symptom
+            return key;
+          } else if (typeof(currentSymptoms[key]) === 'string') {
+            const num = parseInt(currentSymptoms[key]);
+            // if this is fever, then consider it as symptom
+            if (typeof(num) === 'number' && num > 98.6) {
+              return key;
+            }
+          }
+        }
+      }).length;
+    }
+
+    element.nativeElement.innerText = count;
   }
 }
