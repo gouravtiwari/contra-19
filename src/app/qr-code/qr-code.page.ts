@@ -80,7 +80,7 @@ export class QrCodePage implements OnInit {
   }
 
   userProfile() {
-    this.navCtrl.navigateRoot('/disclaimer');
+    this.navCtrl.navigateRoot('/user-info');
   }
 
   // this function is only for temporarily,
