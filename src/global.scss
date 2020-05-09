@@ -34,7 +34,7 @@ ion-grid {
 ion-header {
   top: 0px;
   left: 0px;
-  height: 24%;
+  height: 30%;
   background: transparent linear-gradient(107deg, #21CEDD 0%, #10D0B2 100%) 0% 0% no-repeat padding-box;
   border-radius: 0 0 24px 24px;
   opacity: 1;
@@ -46,20 +46,20 @@ ion-title {
   margin: 0;
   padding: 10% 0;
   text-align: center;
-  font: SemiBold 24px/35px Poppins;
+  font-size: 1.5em;
   letter-spacing: 0px;
   color: #FFFFFF;
   opacity: 1;
 }
 
 ion-content {
-  font-size: 12px;
+  font-size: 1em;
   color: #222222;
   margin: 20px;
   text-align: justify;
   position: absolute;
   z-index: 11;
-  top: 20%;
+  top: 16%;
   left: 3%;
   width: 94%;
 
@@ -68,7 +68,7 @@ ion-content {
   border-radius: 13px;
   opacity: 1;
   overflow: hidden;
-  height: 67%;
+  height: 70%;
 }
 
 ion-footer {
@@ -134,7 +134,7 @@ ion-col .nav-header-icon {
 
 ion-col .nav-header-text {
   text-align: center;
-  font-size: 12px;
+  font-size: 1em;
   letter-spacing: 0px;
   color: #FFFFFF;
   opacity: 1;
