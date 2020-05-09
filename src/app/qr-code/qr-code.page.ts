@@ -102,6 +102,10 @@ export class QrCodePage implements OnInit {
 
 
   reInitializeIdToken() {
+    if (!this.authService.currentUserValue['idToken']) {
+      this.navCtrl.navigateRoot('');
+    }
+
     // Re-initialize when user is loggedIn
     if (this.authService.currentUserValue) {
       if (this.authService.currentUserValue['savedOn'] !== new Date().toDateString()) {

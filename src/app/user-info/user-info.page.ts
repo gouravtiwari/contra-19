@@ -20,7 +20,6 @@ export class UserInfoPage implements OnInit {
   register(form) {
     console.log("register");
     console.log(form.value);
-
     // This needs testing, as API is returning 404
     this.userService.usersUpdate(form.value).subscribe((res) => {
 

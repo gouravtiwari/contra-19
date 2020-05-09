@@ -29,9 +29,16 @@ export class UsersService {
     };
 
     const currentUser = this.authService.currentUserValue;
+
+    // Fresh payload is needed as backend fields are not mapped to ionic model
     const requestData = {
-      'idToken': currentUser.idToken,
-      "user": user
+      'user': {
+        'age': user.age,
+        'gender': user.gender,
+        'status': user.status,
+        'zip_code': user.zipCode,
+        'locale': user.country
+      }
     };
 
     // Update current user locally to persist values
