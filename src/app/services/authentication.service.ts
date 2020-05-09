@@ -27,7 +27,7 @@ export class AuthenticationService {
     }
     updateCurrentUser(currentUser, user) {
       user.idToken = currentUser.idToken;
-      user.savedOn = new Date().toDateString();
+      user.savedOn = currentUser.savedOn;
       this.setCurrentUser(user);
       console.log("Stored updated user locally: ", JSON.stringify(this.currentUserValue));
     }

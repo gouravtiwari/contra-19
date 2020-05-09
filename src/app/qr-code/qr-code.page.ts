@@ -108,12 +108,13 @@ export class QrCodePage implements OnInit {
 
     // Re-initialize when user is loggedIn
     if (this.authService.currentUserValue) {
-      if (this.authService.currentUserValue['savedOn'] !== new Date().toDateString()) {
+      // Fetching token every hour now
+      if (parseInt(this.authService.currentUserValue['savedOn']) + 3600 < Date.now() ) {
         this.openLoader();
         this.signInAnonymously().then(
           (userData) => {
             // Store locally
-            const user = { 'idToken': userData.user.xa, 'savedOn': new Date().toDateString() };
+            const user = { 'idToken': userData.user.xa, 'savedOn': Date.now() };
             this.authService.setCurrentUser(user);
 
             console.log("New id token: " + JSON.stringify(user));
