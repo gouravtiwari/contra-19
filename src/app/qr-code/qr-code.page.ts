@@ -109,7 +109,7 @@ export class QrCodePage implements OnInit {
     // Re-initialize when user is loggedIn
     if (this.authService.currentUserValue) {
       // Fetching token every hour now
-      if (parseInt(this.authService.currentUserValue['savedOn']) + 3600 < Date.now() ) {
+      if (parseInt(this.authService.currentUserValue['savedOn'])  + 3600 * 1000 < Date.now() ) {
         this.openLoader();
         this.signInAnonymously().then(
           (userData) => {

@@ -19,9 +19,13 @@ export class DashboardPage implements OnInit {
   @ViewChild('runnyNoseCanvas', {static: true}) runnyNoseCanvas;
   @ViewChild('difficultyInBreathingCanvas', {static: true}) difficultyInBreathingCanvas;
 
+  // Values on cards
+  @ViewChild('priorityLevel', {static: true}) priorityLevel;
+  @ViewChild('exposureScore', {static: true}) exposureScore;
   @ViewChild('symptomsCount', {static: true}) symptomsCount;
 
   symptomToCanvasMap: any;
+  user: any;
 
   constructor(private platform: Platform,
     private navCtrl: NavController,
@@ -47,9 +51,12 @@ export class DashboardPage implements OnInit {
     this.barChartMethod('difficulty_in_breathing');
     // This needs testing, as API is returning 404
     this.userService.usersShow(this.authenticationService.currentUserValue.idToken).subscribe((res) => {
-      console.log(res);
-      // this.router.navigateByUrl('home');
+      this.user = res;
+      this.setPriorityLevel(this.priorityLevel);
+      this.setExposureScore(this.exposureScore);
     });
+
+
     this.setSymptomsCount(this.symptomsCount);
   }
 
@@ -140,6 +147,14 @@ export class DashboardPage implements OnInit {
         }
       }
     });
+  }
+
+  setPriorityLevel(element) {
+    element.nativeElement.innerText = this.user.priority;
+  }
+
+  setExposureScore(element) {
+    element.nativeElement.innerText = this.user.corona_score || 0;
   }
 
   setSymptomsCount(element) {
