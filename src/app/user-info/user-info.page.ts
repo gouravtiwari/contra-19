@@ -56,7 +56,7 @@ export class UserInfoPage implements OnInit {
       age: [user && user.age || ''],
       gender: [ user && user.gender || '' ],
       status: [ user && user.status || '' ],
-      country: [ user && user.locale || '' ],
+      country: [ user && user.country || '' ],
       zipCode: [ user && user.zip_code || '' ]
     });
   }

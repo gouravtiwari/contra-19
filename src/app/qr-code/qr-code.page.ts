@@ -102,7 +102,7 @@ export class QrCodePage implements OnInit {
 
 
   reInitializeIdToken() {
-    if (!this.authService.currentUserValue['idToken']) {
+    if (!this.authService.currentUserValue || !this.authService.currentUserValue['idToken']) {
       this.navCtrl.navigateRoot('');
     }
 

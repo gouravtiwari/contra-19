@@ -37,7 +37,7 @@ export class UsersService {
         'gender': user.gender,
         'status': user.status,
         'zip_code': user.zipCode,
-        'locale': user.country
+        'country': user.country
       }
     };
 
