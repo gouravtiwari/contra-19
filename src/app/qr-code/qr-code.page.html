@@ -14,17 +14,17 @@
         <div class="nav-header-text">Symptoms</div>
       </ion-col>
     </ion-row>
-  </ion-grid>
-</ion-header>
-<ion-content class="qr-content" scrollY=false slot="fixed">
-  <ion-grid>
-    <ion-row class="qr-content-row">
+    <ion-row>
       <ion-col size="12">
         <div class="qr-code-title">
           Your QR code
         </div>
       </ion-col>
     </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content class="qr-content" scrollY=false slot="fixed">
+  <ion-grid>
     <ion-row>
       <ion-col size="12">
         <ngx-qrcode
@@ -34,13 +34,9 @@
         </ngx-qrcode>
       </ion-col>
     </ion-row>
-  </ion-grid>
-</ion-content>
-<ion-content class="qr-details" scrollY=false slot="fixed">
-  <ion-grid>
     <ion-row>
       <ion-col size="12">
-        <div>
+        <div class="qr-details">
           This QR code Is your unique id. When you meet someone within 6 feet distance, do not forget to scan their QR code
         </div>
       </ion-col>

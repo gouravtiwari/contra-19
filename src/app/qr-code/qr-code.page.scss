@@ -11,14 +11,21 @@ ion-header.qr-code-header {
 }
 
 ion-content.qr-content {
-  top: 25%;
+  font-size: 1em;
+  color: #222222;
+  margin: 20px;
+  text-align: justify;
+  position: absolute;
+  z-index: 11;
+  top: 28%;
   left: 15%;
   width: 70%;
-  background: transparent linear-gradient(107deg, #21CEDD 0%, #10D0B2 100%) 0% 0% no-repeat padding-box;
-  box-shadow: none;
-  border-radius: 0;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 13px;
   opacity: 1;
-  height: 44%;
+  overflow: hidden;
+  max-height: 51%;
 }
 
 ion-row.qr-content-img {
@@ -27,28 +34,17 @@ ion-row.qr-content-img {
   opacity: 1;
 }
 
-ion-content.qr-details {
+.qr-details {
   font-size: 0.8em;
-  margin:0;
-  padding:0;
+  margin: 0 1em;
+  padding: 0;
   color: #222222;
-  margin: 20px;
   text-align: center;
   letter-spacing: 0.14px;
   color: #000000;
   opacity: 1;
   position: absolute;
   z-index: 11;
-  top: 68%;
-  left: 15%;
-  width: 70%;
-
-  background: none;
-  box-shadow: none;
-  border-radius: 0;
-  opacity: 1;
-  overflow: hidden;
-  height: 18%;
 }
 
 div.qrc-class {
@@ -64,7 +60,7 @@ ion-button.qr-screen-buttons {
 ion-row div.qr-code-title {
   background: transparent linear-gradient(107deg, #21CEDD 0%, #10D0B2 100%) 0% 0% no-repeat padding-box;
   margin: 0;
-  padding: 2px;
+  padding: 1em;
   text-align: center;
   font-size: 1.5em;
   font-weight: bold;
