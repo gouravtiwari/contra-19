@@ -62,18 +62,16 @@ export class QrCodePage implements OnInit {
 
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
-      alert('Barcode data ' + JSON.stringify(barcodeData));
-      this.scannedData = barcodeData;
+      this.scannedData = barcodeData.text;
 
       this.userConnectionsService.userConnectionsCreate(
         this.authService.currentUserValue.idToken,
         this.scannedData,
         'qr'
-      )
-        .subscribe(
-          data => { return data['_body']; },
-          error => { console.log(error); }
-        );
+      ).subscribe(
+        data => { return data['_body']; },
+        error => { console.log(error); }
+      );
     }).catch(err => {
       console.log('Error', err);
     });
@@ -102,8 +100,10 @@ export class QrCodePage implements OnInit {
 
 
   reInitializeIdToken() {
+    console.log("this.authService.currentUserValue", this.authService.currentUserValue);
     if (!this.authService.currentUserValue || !this.authService.currentUserValue['idToken']) {
       this.navCtrl.navigateRoot('');
+      return;
     }
 
     // Re-initialize when user is loggedIn

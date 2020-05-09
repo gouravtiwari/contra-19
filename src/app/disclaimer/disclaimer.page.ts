@@ -49,7 +49,7 @@ export class DisclaimerPage implements OnInit {
         );
 
         // Store locally
-        const user = { 'idToken': userData.user.xa, 'savedOn': new Date().toDateString() };
+        const user = { 'idToken': userData.user.xa, 'savedOn': Date.now() };
         this.authService.setCurrentUser(user);
 
         console.log("User created with id token: " + JSON.stringify(user));

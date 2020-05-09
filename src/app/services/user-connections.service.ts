@@ -19,8 +19,8 @@ export class UserConnectionsService {
     };
 
     let requestData = {
-      'idToken': idToken,
-      'friendIdToken': friendIdToken,
+      'id_token': idToken,
+      'friend_id_token': friendIdToken,
       'mode': mode
     }
 
