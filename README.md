@@ -84,6 +84,28 @@ On Mac
     npm i -g cordova
   ```
 
+### Change default app icon
+
+1. Run and add cordova integrations
+
+```
+ionic integrations enable cordova --add
+```
+
+2. Install cordova=res globally
+
+```
+npm i -g cordova-res
+```
+
+3. Generate ios and android icons in /resources
+
+```
+ionic cordova resources ios
+ionic cordova resources android
+```
+
+
 ### Tutorials/Resources:
 
 - [Barcode Scanner](https://www.freakyjolly.com/ionic-barcode-qr-code-scanner-generator-tutorial/)
